@@ -1,0 +1,44 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+
+class Data
+{
+    int arr[10];
+    int max;
+    public:
+ void  get_Data()
+  {
+      for(int i=0;i<10;i++)
+      {
+          cin>>arr[i];
+      }
+  }
+  void largest()
+  {
+      max=arr[0];
+      for(int i=1;i<10;i++)
+      {
+          if (max < arr[i])
+            max = arr[i];
+      }
+  }
+  void display()
+  {
+      cout<<"Largest Number:"<<max<<endl;
+  }
+};
+main()
+{
+    Data d;
+    cout<<"Enter numbers in an array"<<endl;
+    d.get_Data();
+    d.largest();
+    d.display();
+
+}
