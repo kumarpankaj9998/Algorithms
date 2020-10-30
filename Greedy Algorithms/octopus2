@@ -1,0 +1,53 @@
+"""Base class for other exceptions"""
+    pass
+
+
+class HelloError(Error):
+    """Raised when the input value is Hello"""
+    pass
+
+
+class WorldError(Error):
+    """Raised when the input value is World"""
+    pass
+class HelloWorldError(Error):
+    """Raised when the input value is too Hello and World"""
+    pass
+
+
+f = open("helloworld.txt", "r")
+list1=[]
+list1=f.readlines()
+len_list1=len(list1)
+word1=0
+word=0
+for i in range (0,len_list1):
+  try:       
+      word1=list1[i].find('hello')
+      word2=list1[i].find('world')
+     
+      if word1!=-1 and word2!=-1: 
+          raise HelloWorldError 
+      if word1!=-1:
+          raise HelloError
+      if word2!=-1:
+          raise WorldError
+      
+      else:
+          print('no exception')
+
+  except HelloError:
+      list1[i].replace("hello", "hi")
+      print("This value is hello")
+      
+  except WorldError:
+      list1[i].replace("world", "glove")
+      print("This value is world")
+  except HelloWorldError:  
+      list1[i]=list1[i].replace("world", "glove")
+      list1[i]=list1[i].replace("hello", "hi")
+      print("This value is hello and world")
+      print(list1)      
+f = open("helloworld.txt", "w")
+f.writelines(list1)
+f.close()
