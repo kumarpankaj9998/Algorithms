@@ -1,0 +1,77 @@
+#include <iostream>
+#include<conio.h>
+#include<stdlib.h>
+
+#define MAX 100
+
+using namespace std;
+
+class Queue {
+private:
+    int item, i;
+    int arr_queue[MAX];
+    int rear;
+    int front;
+
+public:
+
+    Queue() {
+        rear = 0;
+        front = 0;
+    }
+
+    Queue operator +() {
+        if (rear == MAX)
+            cout << "\n Queue Reached Max!";
+        else {
+            cout << "\nEnter The Value to be Insert : ";
+            cin>>item;
+            cout << "\nPosition : " << rear + 1 << " , Insert Value  : " << item;
+            arr_queue[rear++] = item;
+        }
+    }
+
+    Queue operator -() {
+        if (front == rear)
+            cout << "\n Queue is Empty!";
+        else {
+            cout << "\n Position : " << front << " , Remove Value  :" << arr_queue[front];
+            front++;
+        }
+    }
+
+    void display() {
+        cout << "\n Queue Size : " << (rear - front);
+        for (i = front; i < rear; i++)
+            cout << "\n Position : " << i << " , Value  : " << arr_queue[i];
+    }
+};
+
+int main() {
+    int choice, exit0 = 1;
+    Queue obj;
+    cout << "\nSimple Queue Example - Class and Memeber Functions in C++";
+    do {
+        cout << "\n\n Queue Main Menu";
+
+        cout << "\n1.Insert \n2.Remove \n3.Display \nOthers to exit";
+        cout << "\nEnter Your Choice : ";
+        cin>>choice;
+        switch (choice) {
+            case 1:
+                +obj ;
+                break;
+            case 2:
+                -obj ;
+                break;
+            case 3:
+                obj.display();
+                break;
+            default:
+                exit0 = 0;
+                break;
+        }
+    } while (exit0);
+
+    return 0;
+}
